@@ -1,5 +1,5 @@
-CXX						:= clang++
-BUILD_TYPE		:= Debug
+CXX					:= clang++
+BUILD_TYPE		    := Debug
 
 PROJECT				:= iraira
 TARGET				:= main
