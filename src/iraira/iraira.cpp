@@ -1,6 +1,10 @@
 #include <cstdio>
 #include <cmath>
 #include <string>
+#include <stdio.h>
+#include <iostream>
+#include <time.h>
+#include <chrono>
 
 #define GLFW_INCLUDE_GLU  // GLUライブラリを使用するのに必要
 #include <GLFW/glfw3.h>
@@ -168,6 +172,7 @@ void process(GLFWwindow *window){
         paint_sp(window);
         if(started)
         {
+        auto chrono_start = std::chrono::system_clock::now();
         initializeGL(iraira_way);
         while (glfwWindowShouldClose(window) == GL_FALSE) {
             paint_sp(window);
@@ -186,6 +191,8 @@ void process(GLFWwindow *window){
             }
             else if(is_white(way_data, g_py, g_px) && is_white(end_data, g_py, g_px))
             {
+                auto chrono_end = std::chrono::system_clock::now();
+                std::cout << "Elapsed time(C++):" << std::chrono::duration_cast<std::chrono::milliseconds>(chrono_end - chrono_start).count() << "[ms]" << std::endl;
                 initializeGL(iraira_clear);
                 retry = false;
                 while (glfwWindowShouldClose(window) == GL_FALSE) {
